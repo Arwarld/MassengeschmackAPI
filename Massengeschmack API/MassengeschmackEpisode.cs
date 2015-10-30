@@ -1,37 +1,48 @@
 ﻿namespace Massengeschmack_API
 {
-    public class MassengeschmackEpisode
+    public class MassengeschmackEpisode : MassengeschmackContent
     {
-        public string identifier;
-        public int pid;
-        public int contentType;
-        public string title;
-        public string pdesc;
-        public string img;
-        public string desc;
-        public string duration;
-        public int epnum;
-        public string thumbnail;
-        public string teaserfile;
-        public int date;
-        public bool subscribed;
+        protected int contentType;
+        /// <summary>
+        /// Video Typ (1 = Folgen)
+        /// Bei FKTV z.B. (2 = Postecke, 3 = Interviews, 4 = Extras, 5 = Sendeschluss)
+        /// </summary>
+        public int ContentType
+        {
+            get
+            {
+                return this.contentType;
+            }
+        }
+        protected int epnum;
+        /// <summary>
+        /// Nummer der Folge
+        /// </summary>
+        public int EpisodeNumber
+        {
+            get
+            {
+                return this.epnum;
+            }
+        }
+        protected string thumbnail;
+        /// <summary>
+        /// Vorschaubild URL
+        /// </summary>
+        public string Thumbnail
+        {
+            get
+            {
+                return this.thumbnail;
+            }
+        }
         protected MassengeschmackAPI api;
         public MassengeschmackEpisode(string identifier, int pid, int contentType, string title, string pdesc, string img, string desc, string duration, int epnum, string thumbnail, string teaserfile, int date, bool subscribed, MassengeschmackAPI api)
+            : base(identifier, pid, title, pdesc, img, desc, duration, date, subscribed, teaserfile)
         {
-            this.identifier = identifier;
-            this.pid = pid;
             this.contentType = contentType;
-            this.title = title;
-            this.pdesc = pdesc;
-            this.img = img;
-            this.desc = desc;
-            this.duration = duration;
             this.epnum = epnum;
             this.thumbnail = thumbnail;
-            this.teaserfile = teaserfile;
-            this.date = date;
-            this.subscribed = subscribed;
-            this.api = api;
         }
         /// <summary>
         /// Erhalte den Clip mit Dateilinks dieser Episode.

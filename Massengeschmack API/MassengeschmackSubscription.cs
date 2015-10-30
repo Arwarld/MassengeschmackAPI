@@ -2,8 +2,28 @@
 {
     public class MassengeschmackSubscription
     {
-        public string title;
-        public int pid;
+        protected string title;
+        /// <summary>
+        /// Der Titels des Projekts
+        /// </summary>
+        public string Title
+        {
+            get
+            {
+                return this.title;
+            }
+        }
+        protected int pid;
+        /// <summary>
+        /// Die ID des Projektes, für alle weteren Feedanfragen relevant
+        /// </summary>
+        public int ProjectID
+        {
+            get
+            {
+                return this.pid;
+            }
+        }
         protected MassengeschmackAPI api;
         public MassengeschmackSubscription(string title, int pid, MassengeschmackAPI api)
         {

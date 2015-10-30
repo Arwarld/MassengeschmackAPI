@@ -184,7 +184,7 @@ namespace Massengeschmack_API
             {
                 episodes.Add(new MassengeschmackEpisode((string)ep["identifier"], (int)ep["pid"], (int)ep["contentType"], (string)ep["title"], (string)ep["pdesc"], (string)ep["img"], (string)ep["desc"], (string)ep["duration"], (int)ep["enum"], (string)ep["thumbnail"], (string)ep["teaserFile"], (int)ep["date"], (bool)ep["canAccess"], this));
             }
-            return new MassengeschmackFeed(episodes.ToArray(), (int)result["pages"], (result["next"] is bool ? -1 : (int)result["next"]), (result["prev"] is bool ? -1 : (int)result["prev"]), from, contentType, limit, this);
+            return new MassengeschmackFeed(episodes, (int)result["pages"], (result["next"] is bool ? -1 : (int)result["next"]), (result["prev"] is bool ? -1 : (int)result["prev"]), from, contentType, limit, this);
         }
         /// <summary>
         /// Liefert alle Informationen zu einem bestimmten Clip. Inklusive temporärer download URL, falls Zugang vorhanden.
@@ -199,7 +199,7 @@ namespace Massengeschmack_API
             {
                 files.Add(new MassengeschmackClip.File((int)file["size"], (string)file["t"], (file.ContainsKey("size_readable") ? (string)file["size_readable"] : ""), (string)file["dimensions"], (string)file["desc"], (string)file["url"]));
             }
-            return new MassengeschmackClip((string)result["identifier"], (int)result["pid"], (string)result["title"], (string)result["pdesc"], (string)result["img"], (string)result["desc"], (string)result["duration"], (int)result["date"], (bool)result["subscribed"], (result["teaser"] is bool ? "" : (string)result["teaser"]), files.ToArray());
+            return new MassengeschmackClip((string)result["identifier"], (int)result["pid"], (string)result["title"], (string)result["pdesc"], (string)result["img"], (string)result["desc"], (string)result["duration"], (int)result["date"], (bool)result["subscribed"], (result["teaser"] is bool ? "" : (string)result["teaser"]), files);
         }
     }
 }

@@ -1,16 +1,58 @@
-﻿namespace Massengeschmack_API
+﻿using System.Collections.Generic;
+
+namespace Massengeschmack_API
 {
     public class MassengeschmackFeed
     {
-        public MassengeschmackEpisode[] eps;
-        public int pages;
-        public int next;
-        public int prev;
+        protected List<MassengeschmackEpisode> eps;
+        /// <summary>
+        /// Die Episoden des Feeds
+        /// </summary>
+        public MassengeschmackEpisode[] Episodes
+        {
+            get
+            {
+                return this.eps.ToArray();
+            }
+        }
+        protected int pages;
+        /// <summary>
+        /// Anzahl der Seiten im gesamten Feed mit diesen Parametern
+        /// </summary>
+        public int Pages
+        {
+            get
+            {
+                return this.pages;
+            }
+        }
+        protected int next;
+        /// <summary>
+        /// Nummer der nächsten Seite, falls vorhanden, Sonst -1
+        /// </summary>
+        public int Next
+        {
+            get
+            {
+                return this.next;
+            }
+        }
+        protected int prev;
+        /// <summary>
+        /// Nummer der vorherigen Seite, falls vorhanden, Sonst -1
+        /// </summary>
+        public int Previous
+        {
+            get
+            {
+                return this.prev;
+            }
+        }
         protected int[] from;
         protected int[] contentType;
         protected int limit;
         protected MassengeschmackAPI api;
-        public MassengeschmackFeed(MassengeschmackEpisode[] eps, int pages, int next, int prev, int[] from, int[] contentType, int limit, MassengeschmackAPI api)
+        public MassengeschmackFeed(List<MassengeschmackEpisode> eps, int pages, int next, int prev, int[] from, int[] contentType, int limit, MassengeschmackAPI api)
         {
             this.eps = eps;
             this.pages = pages;
