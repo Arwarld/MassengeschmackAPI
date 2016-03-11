@@ -35,7 +35,7 @@ namespace Massengeschmack_API
         {
             get
             {
-                return this.Title;
+                return this.title;
             }
         }
         protected string pdesc;
@@ -112,7 +112,7 @@ namespace Massengeschmack_API
         {
             get
             {
-                return this.Subscribed;
+                return this.subscribed;
             }
         }
         public MassengeschmackContent(string identifier, int pid, string title, string pdesc, string img, string desc, string duration, int date, bool subscribed,string teaser)

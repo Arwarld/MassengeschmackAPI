@@ -9,7 +9,7 @@ namespace Massengeschmack_API
         /// <summary>
         /// Downloaddateien, verschiedene Formate (720p, 1080p, etc.) falls vorhanden.
         /// </summary>
-        public File[] Flies
+        public File[] Files
         {
             get
             {
